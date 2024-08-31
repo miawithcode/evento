@@ -1,12 +1,11 @@
 import SearchForm from '@/components/SearchForm';
+import Heading from '@/components/ui/Heading';
 import Link from 'next/link';
 
 export default function Home() {
   return (
     <div className="flex h-full flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-6xl">
-        Find events around you
-      </h1>
+      <Heading>Find events around you</Heading>
       <p className="mb-12 mt-7 text-xl opacity-75 md:text-2xl lg:text-3xl">
         Browse more than{' '}
         <span className="text-primary font-bold italic underline">
