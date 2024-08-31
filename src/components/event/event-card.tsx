@@ -10,7 +10,7 @@ export default function EventCard({ event }: EventCardProps) {
   return (
     <Link
       href={`/event/${event.slug}`}
-      className="relative flex w-full flex-col overflow-hidden rounded-xl border bg-white transition hover:scale-105 active:scale-[1.02]"
+      className="state-effects relative flex w-full flex-col overflow-hidden rounded-xl border bg-white"
     >
       <div className="relative aspect-video w-full">
         <Image
