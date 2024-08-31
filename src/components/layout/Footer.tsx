@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 const routes = [
-  { href: '/terms-conditions', label: 'Terms & Conditions' },
-  { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/legal/terms-conditions', label: 'Terms & Conditions' },
+  { href: '/legal/privacy-policy', label: 'Privacy Policy' },
 ];
 
 export default function Footer() {
