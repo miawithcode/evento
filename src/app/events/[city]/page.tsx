@@ -1,9 +1,24 @@
 import Heading from '@/components/ui/Heading';
 
-export default function Page() {
+type PageProps = {
+  params: {
+    city: string;
+  };
+};
+
+export default function Page({ params }: PageProps) {
+  const { city } = params;
   return (
     <div className="flex flex-col items-center justify-center py-24">
-      <Heading>Events on Austin</Heading>
+      <Heading>
+        {city === 'all' ? (
+          'All Events'
+        ) : (
+          <>
+            Events on <span className="capitalize">{city}</span>
+          </>
+        )}
+      </Heading>
     </div>
   );
 }
