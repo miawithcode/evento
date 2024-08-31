@@ -1,5 +1,5 @@
-import SearchForm from '@/components/SearchForm';
-import Heading from '@/components/ui/Heading';
+import SearchForm from '@/components/search-form';
+import Heading from '@/components/ui/heading';
 import Link from 'next/link';
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
       <Heading>Find events around you</Heading>
       <p className="mb-12 mt-7 text-xl opacity-75 md:text-2xl lg:text-3xl">
         Browse more than{' '}
-        <span className="text-primary font-bold italic underline">
+        <span className="font-bold italic text-primary underline">
           10,000 events
         </span>{' '}
         worldwide

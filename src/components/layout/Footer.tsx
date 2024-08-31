@@ -7,7 +7,7 @@ const routes = [
 
 export default function Footer() {
   return (
-    <footer className="flex h-16 items-center justify-between border-t border-black/10 text-xs text-black/50">
+    <footer className="flex min-h-16 items-center justify-between border-t border-black/10 text-xs text-black/50">
       <p>&copy;{new Date().getFullYear()} Mia</p>
 
       <ul className="flex items-center gap-x-6">

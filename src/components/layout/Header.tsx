@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import Logo from '../Logo';
+import Logo from '../logo';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
@@ -15,7 +15,7 @@ export default function Header() {
   const currentPath = usePathname();
 
   return (
-    <header className="flex h-14 items-center justify-between border-b border-black/10">
+    <header className="flex min-h-14 items-center justify-between border-b border-black/10">
       <Logo />
 
       <nav className="h-full">
@@ -35,7 +35,7 @@ export default function Header() {
               {currentPath === route.href && (
                 <motion.div
                   layoutId="header-active-link"
-                  className="bg-primary absolute bottom-0 h-1 w-full"
+                  className="absolute bottom-0 h-1 w-full bg-primary"
                 ></motion.div>
               )}
             </li>

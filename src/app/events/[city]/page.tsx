@@ -1,4 +1,5 @@
-import Heading from '@/components/ui/Heading';
+import EventsGrid from '@/components/event/events-grid';
+import Heading from '@/components/ui/heading';
 import { TEvent } from '@/lib/types';
 
 type PageProps = {
@@ -14,7 +15,6 @@ export default async function Page({ params }: PageProps) {
     `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`,
   );
   const events: TEvent[] = await response.json();
-  console.log(events);
 
   return (
     <div className="flex flex-col items-center justify-center py-24">
@@ -27,9 +27,7 @@ export default async function Page({ params }: PageProps) {
           </>
         )}
       </Heading>
-      {events.map((event) => (
-        <article key={event.id}>{event.name}</article>
-      ))}
+      <EventsGrid className="mt-10" events={events} />
     </div>
   );
 }
