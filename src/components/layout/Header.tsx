@@ -8,23 +8,21 @@ const routes = [
 
 export default function Header() {
   return (
-    <header className="border-b border-black/10">
-      <div className="mx-auto flex h-14 w-full max-w-screen-xl items-center justify-between px-2 md:px-6">
-        <Logo />
+    <header className="flex h-14 items-center justify-between border-b border-black/10">
+      <Logo />
 
-        <nav>
-          <ul className="flex gap-x-4 text-sm md:gap-x-6">
-            {routes.map((route) => (
-              <li
-                key={route.href}
-                className="text-black/50 transition hover:text-black"
-              >
-                <Link href={route.href}>{route.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+      <nav>
+        <ul className="flex gap-x-4 text-sm md:gap-x-6">
+          {routes.map((route) => (
+            <li
+              key={route.href}
+              className="text-black/50 transition hover:text-black"
+            >
+              <Link href={route.href}>{route.label}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }

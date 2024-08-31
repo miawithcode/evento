@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="mx-auto flex h-full w-full max-w-screen-xl flex-col items-center justify-center px-2 md:px-6">
+    <div className="flex h-full flex-col items-center justify-center">
       <h1 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-6xl">
         Find events around you
       </h1>

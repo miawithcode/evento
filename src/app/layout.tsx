@@ -4,6 +4,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import Container from '@/components/layout/Container';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,13 +22,15 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body
         className={cn(
-          'relative flex h-full min-h-svh flex-col bg-zinc-100 antialiased',
+          'relative h-full bg-zinc-100 antialiased',
           inter.className,
         )}
       >
-        <Header />
-        <main className="flex-1 flex-grow">{children}</main>
-        <Footer />
+        <Container>
+          <Header />
+          <main className="flex-1 flex-grow">{children}</main>
+          <Footer />
+        </Container>
       </body>
     </html>
   );
