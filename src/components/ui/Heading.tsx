@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-const Heading = ({children}: {children: React.ReactNode}) => {
+const Heading = ({ children }: { children: React.ReactNode }) => {
   return (
-    <h1 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-6xl">
+    <h1 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
       {children}
     </h1>
   );
