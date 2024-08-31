@@ -1,5 +1,6 @@
 import { TEvent } from '@/lib/types';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type EventCardProps = {
   event: TEvent;
@@ -7,7 +8,10 @@ type EventCardProps = {
 
 export default function EventCard({ event }: EventCardProps) {
   return (
-    <article className="relative flex w-full flex-col overflow-hidden rounded-xl border bg-white">
+    <Link
+      href={`/event/${event.slug}`}
+      className="relative flex w-full flex-col overflow-hidden rounded-xl border bg-white transition hover:scale-105 active:scale-[1.02]"
+    >
       <div className="relative aspect-video w-full">
         <Image
           alt={event.name}
@@ -36,6 +40,6 @@ export default function EventCard({ event }: EventCardProps) {
           })}
         </p>
       </section>
-    </article>
+    </Link>
   );
 }
