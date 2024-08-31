@@ -1,5 +1,7 @@
 # Evento
 
+![](./public/screenshot.png)
+
 ## Tech Stacks
 
 - **Framework**: [Next.js](https://nextjs.org/)
