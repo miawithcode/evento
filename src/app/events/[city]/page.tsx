@@ -1,4 +1,5 @@
 import Heading from '@/components/ui/Heading';
+import { TEvent } from '@/lib/types';
 
 type PageProps = {
   params: {
@@ -6,8 +7,15 @@ type PageProps = {
   };
 };
 
-export default function Page({ params }: PageProps) {
+export default async function Page({ params }: PageProps) {
   const { city } = params;
+
+  const response = await fetch(
+    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`,
+  );
+  const events: TEvent[] = await response.json();
+  console.log(events);
+
   return (
     <div className="flex flex-col items-center justify-center py-24">
       <Heading>
@@ -19,6 +27,9 @@ export default function Page({ params }: PageProps) {
           </>
         )}
       </Heading>
+      {events.map((event) => (
+        <article key={event.id}>{event.name}</article>
+      ))}
     </div>
   );
 }
