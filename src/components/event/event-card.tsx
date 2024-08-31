@@ -7,7 +7,7 @@ type EventCardProps = {
 
 export default function EventCard({ event }: EventCardProps) {
   return (
-    <article className="flex w-full flex-col overflow-hidden rounded-xl border bg-white">
+    <article className="relative flex w-full flex-col overflow-hidden rounded-xl border bg-white">
       <div className="relative aspect-video w-full">
         <Image
           alt={event.name}
@@ -23,6 +23,19 @@ export default function EventCard({ event }: EventCardProps) {
         <p className="italic text-black/75">{event.organizerName}</p>
         <p className="mt-4 text-sm text-black/50">{event.location}</p>
       </div>
+
+      <section className="absolute left-3 top-3 flex h-12 w-12 flex-col items-center justify-center rounded-md bg-white/95 shadow-lg">
+        <p className="-mb-[5px] text-xl font-semibold">
+          {new Date(event.date).toLocaleDateString('en-US', {
+            day: '2-digit',
+          })}
+        </p>
+        <p className="text-xs uppercase text-primary">
+          {new Date(event.date).toLocaleDateString('en-US', {
+            month: 'short',
+          })}
+        </p>
+      </section>
     </article>
   );
 }
