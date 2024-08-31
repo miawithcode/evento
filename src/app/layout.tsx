@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body
         className={cn(
-          'relative flex h-full min-h-svh flex-col antialiased',
+          'relative flex h-full min-h-svh flex-col bg-zinc-100 antialiased',
           inter.className,
         )}
       >
