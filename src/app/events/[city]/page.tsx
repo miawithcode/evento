@@ -1,6 +1,6 @@
 import EventsGrid from '@/components/event/events-grid';
-import EventsGridSkeleton from '@/components/skeleton/events-grid-skeleton';
 import Heading from '@/components/ui/heading';
+import EventsGridSkeleton from '@/components/ui/skeleton/events-grid-skeleton';
 import { Suspense } from 'react';
 
 type PageProps = {
@@ -22,7 +22,7 @@ export default async function Page({ params }: PageProps) {
           </>
         )}
       </Heading>
-      
+
       <Suspense fallback={<EventsGridSkeleton />}>
         <EventsGrid className="mt-10" city={city} />
       </Suspense>
