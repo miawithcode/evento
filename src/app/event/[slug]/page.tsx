@@ -1,20 +1,33 @@
 import { TEvent } from '@/lib/types';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
-type PageProps = {
+type Props = {
   params: {
     slug: string;
   };
 };
 
-export default async function Page({ params }: PageProps) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = params;
+
+  const response = await fetch(
+    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`,
+  );
+  const event: TEvent = await response.json();
+
+  return {
+    title: event.name,
+  };
+}
+
+export default async function Page({ params }: Props) {
   const { slug } = params;
   const response = await fetch(
     `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`,
   );
   const event: TEvent = await response.json();
-  console.log(event);
 
   return (
     <article className="mx-auto max-w-screen-md space-y-16 py-16">
