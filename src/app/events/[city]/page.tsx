@@ -1,6 +1,7 @@
 import EventsGrid from '@/components/event/events-grid';
+import EventsGridSkeleton from '@/components/skeleton/events-grid-skeleton';
 import Heading from '@/components/ui/heading';
-import { TEvent } from '@/lib/types';
+import { Suspense } from 'react';
 
 type PageProps = {
   params: {
@@ -10,12 +11,6 @@ type PageProps = {
 
 export default async function Page({ params }: PageProps) {
   const { city } = params;
-
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`,
-  );
-  const events: TEvent[] = await response.json();
-
   return (
     <div className="flex flex-col items-center justify-center py-24">
       <Heading>
@@ -27,7 +22,10 @@ export default async function Page({ params }: PageProps) {
           </>
         )}
       </Heading>
-      <EventsGrid className="mt-10" events={events} />
+      
+      <Suspense fallback={<EventsGridSkeleton />}>
+        <EventsGrid className="mt-10" city={city} />
+      </Suspense>
     </div>
   );
 }

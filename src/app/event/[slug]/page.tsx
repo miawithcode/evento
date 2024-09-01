@@ -1,4 +1,3 @@
-import Heading from '@/components/ui/heading';
 import { TEvent } from '@/lib/types';
 import Image from 'next/image';
 import { ReactNode } from 'react';

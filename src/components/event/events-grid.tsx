@@ -3,11 +3,16 @@ import EventCard from './event-card';
 import { cn } from '@/lib/utils';
 
 type EventsGridProps = {
-  events: TEvent[];
+  city: string;
   className?: string;
 };
 
-export default function EventsGrid({ events, className }: EventsGridProps) {
+export default async function EventsGrid({ city, className }: EventsGridProps) {
+  const response = await fetch(
+    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`,
+  );
+  const events: TEvent[] = await response.json();
+
   return (
     <section
       className={cn(
