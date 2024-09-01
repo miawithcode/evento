@@ -7,13 +7,13 @@ import { pageSize } from '@/lib/constants';
 type EventsGridProps = {
   city: string;
   className?: string;
-  page: number;
+  page?: number;
 };
 
 export default async function EventsGrid({
   city,
   className,
-  page,
+  page = 1,
 }: EventsGridProps) {
   const { events, totalCount } = await getEvents(city, page);
 

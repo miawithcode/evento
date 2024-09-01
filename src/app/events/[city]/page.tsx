@@ -4,6 +4,7 @@ import EventsGridSkeleton from '@/components/ui/skeleton/events-grid-skeleton';
 import { capitalize } from '@/lib/utils';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
+import { z } from 'zod';
 
 type Props = {
   params: {
@@ -23,9 +24,15 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
+const pageNumberSchema = z.coerce.number().int().positive().optional();
+
 export default async function Page({ params, searchParams }: PageProps) {
   const { city } = params;
-  const page = searchParams.page ?? 1;
+  // const page = searchParams.page ?? 1;
+  const parsedPage = pageNumberSchema.safeParse(searchParams.page);
+  if (!parsedPage.success) {
+    throw new Error('Invalid page number');
+  }
 
   return (
     <div className="flex flex-col items-center justify-center py-24">
@@ -39,8 +46,8 @@ export default async function Page({ params, searchParams }: PageProps) {
         )}
       </Heading>
 
-      <Suspense key={city + page} fallback={<EventsGridSkeleton />}>
-        <EventsGrid className="mt-10" city={city} page={+page} />
+      <Suspense key={city + parsedPage.data} fallback={<EventsGridSkeleton />}>
+        <EventsGrid className="mt-10" city={city} page={parsedPage.data} />
       </Suspense>
     </div>
   );
