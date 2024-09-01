@@ -1,5 +1,6 @@
 import { capitalize } from './utils';
 import prisma from './db';
+import { notFound } from 'next/navigation';
 
 export async function getEvents(city: string) {
   /**
@@ -29,6 +30,11 @@ export async function getEvents(city: string) {
       date: 'asc',
     },
   });
+
+  if (!events) {
+    return notFound();
+  }
+
   return { events };
 }
 
@@ -38,5 +44,10 @@ export async function getEvent(slug: string) {
       slug: slug,
     },
   });
+
+  if (!event) {
+    return notFound();
+  }
+
   return { event };
 }
