@@ -16,7 +16,7 @@ export default function Header() {
 
   return (
     <header className="flex min-h-14 items-center justify-between border-b border-black/10">
-      <Logo />
+      {/* <Logo /> */}
 
       <nav className="h-full">
         <ul className="flex h-full gap-x-4 text-sm md:gap-x-6">
