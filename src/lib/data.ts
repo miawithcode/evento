@@ -1,12 +1,17 @@
-import { Event } from '@prisma/client';
+import { capitalize } from './utils';
+import prisma from './db';
 
 export async function getEvents(city: string) {
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`,
-    {
-      next: { revalidate: 60 * 5 },
-    },
-  );
+  /**
+   * revalidate
+   */
+  // const response = await fetch(
+  //   `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`,
+  //   {
+  //     next: { revalidate: 60 * 5 },
+  //   },
+  // );
+
   /**
    * no cache
    */
@@ -16,14 +21,19 @@ export async function getEvents(city: string) {
   //     cache: 'no-cache',
   //   },
   // );
-  const events: Event[] = await response.json();
+  const events = await prisma.event.findMany({
+    where: {
+      city: city === 'all' ? undefined : capitalize(city),
+    },
+  });
   return { events };
 }
 
 export async function getEvent(slug: string) {
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`,
-  );
-  const event: Event = await response.json();
+  const event = await prisma.event.findUnique({
+    where: {
+      slug: slug,
+    },
+  });
   return { event };
 }
