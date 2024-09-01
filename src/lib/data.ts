@@ -1,4 +1,4 @@
-import { TEvent } from './types';
+import { Event } from '@prisma/client';
 
 export async function getEvents(city: string) {
   const response = await fetch(
@@ -16,7 +16,7 @@ export async function getEvents(city: string) {
   //     cache: 'no-cache',
   //   },
   // );
-  const events: TEvent[] = await response.json();
+  const events: Event[] = await response.json();
   return { events };
 }
 
@@ -24,6 +24,6 @@ export async function getEvent(slug: string) {
   const response = await fetch(
     `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`,
   );
-  const event: TEvent = await response.json();
+  const event: Event = await response.json();
   return { event };
 }
