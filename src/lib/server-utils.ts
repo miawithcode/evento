@@ -30,7 +30,7 @@ export const getEvents = unstable_cache(async (city: string, page = 1) => {
 
   const events = await prisma.event.findMany({
     where: {
-      city: city === 'all' ? undefined : capitalize(city),
+      city: city === 'all' ? undefined : { equals: city, mode: 'insensitive' },
     },
     orderBy: {
       date: 'asc',
