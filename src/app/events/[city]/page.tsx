@@ -11,6 +11,10 @@ type Props = {
   };
 };
 
+type PageProps = Props & {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
 export function generateMetadata({ params }: Props): Metadata {
   const { city } = params;
 
@@ -19,8 +23,10 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page({ params, searchParams }: PageProps) {
   const { city } = params;
+  const page = searchParams.page ?? 1;
+
   return (
     <div className="flex flex-col items-center justify-center py-24">
       <Heading>
@@ -33,8 +39,8 @@ export default async function Page({ params }: Props) {
         )}
       </Heading>
 
-      <Suspense fallback={<EventsGridSkeleton />}>
-        <EventsGrid className="mt-10" city={city} />
+      <Suspense key={city + page} fallback={<EventsGridSkeleton />}>
+        <EventsGrid className="mt-10" city={city} page={+page} />
       </Suspense>
     </div>
   );

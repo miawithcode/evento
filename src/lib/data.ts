@@ -1,8 +1,9 @@
 import { capitalize } from './utils';
 import prisma from './db';
 import { notFound } from 'next/navigation';
+import { pageSize } from './constants';
 
-export async function getEvents(city: string) {
+export async function getEvents(city: string, page = 1) {
   /**
    * revalidate
    */
@@ -22,6 +23,7 @@ export async function getEvents(city: string) {
   //     cache: 'no-cache',
   //   },
   // );
+
   const events = await prisma.event.findMany({
     where: {
       city: city === 'all' ? undefined : capitalize(city),
@@ -29,13 +31,26 @@ export async function getEvents(city: string) {
     orderBy: {
       date: 'asc',
     },
+    take: pageSize,
+    skip: (page - 1) * pageSize,
   });
+
+  let totalCount;
+  if (city === 'all') {
+    totalCount = await prisma.event.count();
+  } else {
+    totalCount = await prisma.event.count({
+      where: {
+        city: capitalize(city),
+      },
+    });
+  }
 
   if (!events) {
     return notFound();
   }
 
-  return { events };
+  return { events, totalCount };
 }
 
 export async function getEvent(slug: string) {
