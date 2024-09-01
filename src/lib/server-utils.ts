@@ -1,3 +1,6 @@
+// npm install server-only
+import 'server-only';
+
 import { capitalize } from './utils';
 import prisma from './db';
 import { notFound } from 'next/navigation';

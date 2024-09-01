@@ -1,8 +1,9 @@
 import EventCard from './event-card';
 import { cn } from '@/lib/utils';
-import { getEvents } from '@/lib/data';
+
 import PaginationControls from '../pagination-controls';
 import { pageSize } from '@/lib/constants';
+import { getEvents } from '@/lib/server-utils';
 
 type EventsGridProps = {
   city: string;

@@ -1,4 +1,4 @@
-import { getEvent } from '@/lib/data';
+import { getEvent } from '@/lib/server-utils';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { ReactNode } from 'react';
