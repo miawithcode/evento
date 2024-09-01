@@ -1,5 +1,5 @@
 import SearchForm from '@/components/search-form';
-import Heading from '@/components/ui/heading';
+import Heading from '@/components/heading';
 import Link from 'next/link';
 
 export default function Home() {

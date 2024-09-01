@@ -1,6 +1,6 @@
 import EventsGrid from '@/components/event/events-grid';
-import Heading from '@/components/ui/heading';
-import EventsGridSkeleton from '@/components/ui/skeleton/events-grid-skeleton';
+import Heading from '@/components/heading';
+import EventsGridSkeleton from '@/components/skeleton/events-grid-skeleton';
 import { capitalize } from '@/lib/utils';
 import { Metadata } from 'next';
 import { Suspense } from 'react';

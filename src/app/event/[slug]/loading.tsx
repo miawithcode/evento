@@ -1,4 +1,4 @@
-import EventPageSkeleton from '@/components/ui/skeleton/event-page-skeleton';
+import EventPageSkeleton from '@/components/skeleton/event-page-skeleton';
 
 export default function Loading() {
   return <EventPageSkeleton />;
